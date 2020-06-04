@@ -1,5 +1,5 @@
 <template>
-	<div v-if="!loading">
+	<div>
 
 		<img
 			:src="randomImgUrl"
@@ -9,8 +9,10 @@
 			:info="imgInfo">
 		</img-info>
 
+		<loader :loading="loading"></loader>
+
 	</div>
-	<h1 v-else class="loader">LOADING</h1>
+
 
 
 </template>
@@ -18,16 +20,19 @@
 <script>
     import axios from "axios";
 
-    import imgInfo from "./imgInfo";
+    import ImgInfo from "./ImgInfo";
+    import Loader from "./Loader";
 
     export default {
         name: "ImageComponent",
         components: {
-            imgInfo
+            Loader,
+            ImgInfo
         },
         props: {
             position: Number,
             grayScale: Boolean,
+            timestamp: Number
         },
         data() {
             return {
@@ -64,7 +69,7 @@
                 axios.get(this.getRandom)
                     .then(response => {
                         this.id = response.headers["picsum-id"];
-                        this.loading = false;
+
                         this.getImageInfo();
                     })
                     .catch(e => {
@@ -76,6 +81,7 @@
                 axios.get(this.imgInfoUrl)
                     .then(response => {
                         this.imgInfo = response.data;
+                        this.loading = false;
                     })
                     .catch(e => {
                         console.error(e)
@@ -85,19 +91,21 @@
 
         mounted() {
             this.fetchImage();
-        }
+        },
+
+				watch: {
+            timestamp() {
+                this.fetchImage();
+						}
+				}
     }
 </script>
 
 <style scoped>
 	.img {
 		max-width: 100%;
-		width: 100%;
-		height: auto;
 		position: relative;
 	}
 
-	.loader {
 
-	}
 </style>

@@ -9,7 +9,7 @@
 		:href="info['url']"
 		target="_blank"
 		class="link">
-		{{ info['url'] }}
+		{{ info.url }}
 	</a>
 
  </div>
@@ -17,7 +17,7 @@
 
 <script>
     export default {
-        name: "imgInfo",
+        name: "ImgInfo",
         props: {
             info: Object
         }

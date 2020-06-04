@@ -16,15 +16,3 @@
         }
     }
 </script>
-
-<style scoped>
- .button {
-	display: block;
-	background-color: #b48fec;
-	color: aliceblue;
-	border-radius: 0.25rem;
-	border-color: #b48fec;
-	padding: 10px;
-	cursor: pointer;
- }
-</style>

@@ -1,5 +1,6 @@
 <template>
 	<div id="app">
+		<h1 class="text-center">Photo fetcher</h1>
 		<div class="header">
 			<GrayScaleSwitch
 				@grayScale="switchGrayScale"
@@ -11,13 +12,15 @@
 				@fetchNew="fetchNew">
 			</FetchButton>
 		</div>
+
 		<div class="imgContainer">
 			<div
 				v-for="n in 4"
-				:key="timestamp+n+'div'"
+				:key="'imgContainer_' + n"
 			>
 				<ImageComponent
-					:key="timestamp+n"
+					:key="'img_' + n"
+					:timestamp="timestamp"
 					:position="n"
 					:grayScale="isGrayScale"
 					class="imageComponent"/>
