@@ -38,7 +38,7 @@
             return {
                 size: 400,
                 baseUrl: "https://picsum.photos",
-                imgBaseUrl: "https://i.picsum.photos/id/",
+                imgBaseUrl: "https://picsum.photos/id/",
                 id: undefined,
                 loading: true,
                 imgInfo: {}
